@@ -1,0 +1,33 @@
+Queue Using Two Stacks
+-------------------------
+Problem Description
+
+Implement a queue using two stacks to achieve FIFO behavior with LIFO structures.
+Solution Overview
+Uses one stack for enqueue operations and another for dequeue/peek operations, transferring elements when needed.
+Data Structure Used
+
+Two Stacks: leftStack (enqueue) and rightStack (dequeue/peek)
+Generic Implementation: Supports any data type
+
+Why This Data Structure is Efficient
+
+Amortized O(1): Average case constant time operations
+Lazy Transfer: Only transfers when necessary
+Memory Efficient: No additional data structures needed
+FIFO Guarantee: Maintains queue semantics
+
+Algorithm Approach
+
+Enqueue: Always push to leftStack
+Dequeue/Peek: If rightStack empty, transfer all from leftStack
+Transfer: Maintains FIFO order through double reversal
+
+Time Complexity
+
+Enqueue: O(1) - Always constant
+Dequeue/Peek: O(1) amortized - Each element transferred at most once
+Space Complexity: O(n) - Storage for n elements
+
+Amortized Analysis
+Each element is pushed and popped exactly once from each stack, giving O(1) amortized time per operation.
