@@ -1,0 +1,30 @@
+Sparse Arrays
+--------------
+Problem Description
+Count occurrences of query strings in a list of strings efficiently.
+Solution Overview
+Uses HashMap to pre-compute frequencies, then answers queries in O(1) time.
+Data Structure Used
+
+HashMap: String to frequency mapping
+ArrayList: Dynamic array for results
+
+Why This Data Structure is Efficient
+
+O(1) Lookup: Constant time query answering
+Pre-computation: One-time frequency calculation
+Memory Efficient: Only stores unique strings
+Bulk Operations: Handles multiple queries efficiently
+
+Algorithm Approach
+
+Build frequency map from string list
+For each query, lookup frequency in map
+Return 0 if string not found, otherwise return count
+
+Time Complexity
+
+Preprocessing: O(n) - Build frequency map
+Query: O(1) - HashMap lookup
+Total: O(n + m) - n strings, m queries
+Space Complexity: O(k) - k unique strings
