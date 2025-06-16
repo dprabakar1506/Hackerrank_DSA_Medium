@@ -1,0 +1,61 @@
+Huffman Decoding
+Problem Description
+Decode a binary string using a Huffman tree where 0 represents left traversal and 1 represents right traversal.
+Solution Overview
+Traverse the Huffman tree based on binary digits, collecting characters when reaching leaf nodes.
+Data Structure Used
+
+Binary Tree: Huffman tree structure
+StringBuilder: Efficient string concatenation
+
+Why This Data Structure is Efficient
+
+Optimal Encoding: Huffman trees provide optimal prefix-free codes
+Tree Traversal: Natural binary decision making
+StringBuilder: Avoids string concatenation overhead
+Leaf Detection: Clear termination condition
+
+Algorithm Approach
+
+Start at root of Huffman tree
+For each bit: go left (0) or right (1)
+When reaching leaf: append character and reset to root
+Continue until all bits processed
+
+Time Complexity
+
+Time Complexity: O(n) - Process each bit once
+Space Complexity: O(m) - Output string length
+
+
+Queue Using Two Stacks
+Problem Description
+Implement a queue using two stacks to achieve FIFO behavior with LIFO structures.
+Solution Overview
+Uses one stack for enqueue operations and another for dequeue/peek operations, transferring elements when needed.
+Data Structure Used
+
+Two Stacks: leftStack (enqueue) and rightStack (dequeue/peek)
+Generic Implementation: Supports any data type
+
+Why This Data Structure is Efficient
+
+Amortized O(1): Average case constant time operations
+Lazy Transfer: Only transfers when necessary
+Memory Efficient: No additional data structures needed
+FIFO Guarantee: Maintains queue semantics
+
+Algorithm Approach
+
+Enqueue: Always push to leftStack
+Dequeue/Peek: If rightStack empty, transfer all from leftStack
+Transfer: Maintains FIFO order through double reversal
+
+Time Complexity
+
+Enqueue: O(1) - Always constant
+Dequeue/Peek: O(1) amortized - Each element transferred at most once
+Space Complexity: O(n) - Storage for n elements
+
+Amortized Analysis
+Each element is pushed and popped exactly once from each stack, giving O(1) amortized time per operation.
