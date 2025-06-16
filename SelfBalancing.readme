@@ -1,0 +1,37 @@
+Self-Balancing BST(AVL Tree)
+-----------------------------
+Problem Description
+Implement a self-balancing binary search tree that maintains height balance through rotations.
+Solution Overview
+Maintains AVL property (height difference ≤ 1) through single and double rotations after insertions.
+Data Structure Used
+
+Binary Tree: Node structure with height information
+Balance Factor: Left height - Right height
+
+Why This Data Structure is Efficient
+
+Guaranteed Balance: O(log n) operations
+Self-Balancing: Automatic rebalancing after modifications
+Height Tracking: Efficient balance factor calculation
+Rotation Operations: O(1) tree restructuring
+
+Algorithm Approach
+
+Insert: Standard BST insertion
+Update Heights: Recalculate node heights
+Check Balance: Calculate balance factor
+Rotate: Apply appropriate rotation if unbalanced
+
+Rotation Types
+
+LL Rotation: Right rotation for left-heavy
+RR Rotation: Left rotation for right-heavy
+LR Rotation: Left-Right rotation
+RL Rotation: Right-Left rotation
+
+Time Complexity
+
+Insert/Search/Delete: O(log n) - Guaranteed balanced height
+Space Complexity: O(n) - Node storage
+Rotation: O(1) - Constant time restructuring
