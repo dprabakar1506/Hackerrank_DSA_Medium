@@ -28,7 +28,7 @@ Time Complexity: O(n) - Single pass through string
 Space Complexity: O(n) - Worst case: all opening brackets
 
 Code Structure
-javapublic static String isBalanced(String s) {
+public static String isBalanced(String s) {
     Stack<Character> stack = new Stack<>();
     
     for (char ch : s.toCharArray()) {
