@@ -1,0 +1,50 @@
+Balanced Brackets
+Problem Description
+Determine if a string of brackets is balanced. A balanced string has every opening bracket matched with a corresponding closing bracket in the correct order.
+Solution Overview
+Uses a stack-based approach to match opening and closing brackets. Push opening brackets onto stack, pop and validate when encountering closing brackets.
+Data Structure Used
+
+Stack: LIFO structure for bracket matching
+Character Array: For string traversal
+
+Why This Data Structure is Efficient
+
+LIFO Property: Perfect for nested bracket matching
+O(1) Operations: Push and pop operations are constant time
+Memory Efficient: Only stores unmatched opening brackets
+Natural Matching: Stack naturally handles nested structures
+
+Algorithm Approach
+
+Traverse each character in the string
+If opening bracket: push to stack
+If closing bracket: check if stack is empty or top doesn't match
+After traversal: stack should be empty for balanced string
+
+Time Complexity
+
+Time Complexity: O(n) - Single pass through string
+Space Complexity: O(n) - Worst case: all opening brackets
+
+Code Structure
+javapublic static String isBalanced(String s) {
+    Stack<Character> stack = new Stack<>();
+    
+    for (char ch : s.toCharArray()) {
+        if (ch == '(' || ch == '{' || ch == '[') {
+            stack.push(ch);
+        } else {
+            if (stack.isEmpty()) return "NO";
+            
+            char top = stack.pop();
+            if ((ch == ')' && top != '(') ||
+                (ch == '}' && top != '{') ||
+                (ch == ']' && top != '[')) {
+                return "NO";
+            }
+        }
+    }
+    
+    return stack.isEmpty() ? "YES" : "NO";
+}
