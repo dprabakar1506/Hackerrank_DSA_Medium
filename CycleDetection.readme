@@ -1,0 +1,30 @@
+Problem Description
+Detect if a linked list contains a cycle using Floyd's Cycle Detection Algorithm.
+Solution Overview
+Uses two pointers moving at different speeds. If there's a cycle, the fast pointer will eventually meet the slow pointer.
+Data Structure Used
+
+Linked List: Single linked list with potential cycle
+Two Pointers: Slow (moves 1 step) and Fast (moves 2 steps)
+
+Why This Data Structure is Efficient
+
+Constant Space: O(1) space complexity
+Single Pass: O(n) time complexity
+Mathematical Guarantee: Fast pointer will catch slow pointer in cycle
+No Modification: Doesn't alter the original list
+
+Algorithm Approach
+
+Initialize both pointers to head
+Move slow pointer one step, fast pointer two steps
+If they meet, cycle exists
+If fast pointer reaches null, no cycle
+
+Time Complexity
+
+Time Complexity: O(n) - At most n iterations
+Space Complexity: O(1) - Only two pointer variables
+
+Mathematical Foundation
+If cycle exists with length C, fast pointer gains 1 position per iteration. They will meet within C iterations after slow pointer enters the cycle.
