@@ -1,0 +1,34 @@
+Largest Rectangle in Histogram
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+Problem Description
+--------------------------
+Given heights of bars in a histogram, find the area of the largest rectangle that can be formed using consecutive bars.
+
+Solution Overview
+-------------------------
+Uses stack-based approach to efficiently find the largest rectangle by maintaining indices of bars in increasing order of height.
+
+Data Structure Used
+-------------------------
+Stack: Stores indices of histogram bars in increasing order of height
+Array/List: Input histogram heights
+
+Why This Data Structure is Efficient
+-----------------------------------------
+Stack Properties: LIFO nature helps in finding boundaries efficiently
+Index Storage: Storing indices instead of values helps calculate width
+Monotonic Stack: Maintains increasing order for optimal boundary detection
+Single Pass: Processes each bar exactly once
+
+Algorithm Approach
+-------------------------
+Iterate through all bars including a virtual bar of height 0 at the end
+For each bar, maintain stack in increasing order of heights
+When current bar is shorter, pop from stack and calculate area
+Width is calculated using stack properties (current index - previous index - 1)
+Keep track of maximum area encountered
+
+Time Complexity
+-----------------------
+Time Complexity: O(n) - Each bar is pushed and popped at most once
+Space Complexity: O(n) - Stack can store up to n indices in worst case
