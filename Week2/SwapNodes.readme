@@ -1,0 +1,39 @@
+Swap Nodes in Binary Tree
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Problem Description
+------------------------
+Given a binary tree, perform swap operations at specific depths. 
+For each query with value k, swap left and right subtrees of all nodes at depths that are multiples of k.
+
+Solution Overview
+--------------------
+Uses recursive tree traversal with depth tracking. For each node, checks if current depth is a multiple of k and swaps children if condition is met.
+
+Data Structure Used
+-------------------------
+Binary Tree: Tree structure with left and right child pointers
+Queue: For level-order construction of the tree
+Recursion Stack: Implicit stack for tree traversal
+
+Why This Data Structure is Efficient
+--------------------------------------------
+Tree Structure: Natural representation for hierarchical data
+Recursive Traversal: Elegant solution for tree operations
+In-place Swapping: No extra space needed for swapping operations
+Level-order Construction: Efficient tree building from input
+
+Algorithm Approach
+-------------------------
+Tree Construction: Use BFS with queue to build tree from input
+Swap Operation: Recursively traverse tree with depth tracking
+Depth Check: At each node, check if depth is multiple of k
+Swap Logic: Exchange left and right child references
+Inorder Traversal: Print tree in inorder after each swap operation
+
+Time Complexity
+---------------------
+Tree Construction: O(n) - Visit each node once during BFS
+Swap Operation: O(n) - Visit each node once during traversal
+Inorder Traversal: O(n) - Visit each node once for printing
+
+Space Complexity: O(h) - Where h is height of tree (recursion stack)
