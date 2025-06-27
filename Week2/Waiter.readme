@@ -1,0 +1,43 @@
+Waiter Problem
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+Problem Description
+-------------------------
+A waiter has a stack of plates. For Q iterations, separate plates divisible by the ith prime number into a new stack, 
+print them, and continue with remaining plates.
+
+Solution Overview
+------------------------
+Uses stack operations with prime number generation. For each iteration, separates plates based on divisibility by current prime, processes divisible plates, and continues with remainder.
+
+Data Structure Used
+------------------------------
+Stack: LIFO structure perfect for plate management
+Prime Number Generation: Mathematical approach to find next prime
+
+Why This Data Structure is Efficient
+--------------------------------------------
+Stack Operations: O(1) push and pop operations
+Natural Problem Mapping: Stack behavior matches plate stacking
+Memory Efficient: Only stores plates currently being processed
+Separation Logic: Easy to separate plates based on conditions
+
+Algorithm Approach
+-----------------------
+Initialization: Push all plates onto initial stack A
+For each iteration:
+
+Create new stack B for plates divisible by current prime
+Create stack nextA for remaining plates
+Pop from A, categorize into B or nextA based on divisibility
+Print all plates from B
+Set A = nextA for next iteration
+Find next prime number
+
+Final Step: Print remaining plates in stack A
+
+Time Complexity
+-----------------------
+Time Complexity: O(N × Q + P) - Where N is plates, Q is iterations, P is prime generation cost
+Space Complexity: O(N) - Maximum space for storing all plates in stacks
+Prime Generation: O(p²) for each prime p (trial division method)
+
