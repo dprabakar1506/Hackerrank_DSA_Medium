@@ -1,0 +1,36 @@
+Down to Zero Game
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Problem Description
+------------------------
+Given a number N, find the minimum number of operations to reduce it to 0. 
+In each operation, you can either subtract 1 or divide by any of its divisors (other than 1).
+
+Solution Overview
+---------------------
+Uses dynamic programming with precomputed solutions. For each number, finds the minimum operations by considering all possible divisors and choosing the path with minimum cost.
+
+Data Structure Used
+-----------------------
+Array: Stores precomputed minimum operations for each number up to limit
+Dynamic Programming Table: Memoization to avoid recalculating same subproblems
+
+Why This Data Structure is Efficient
+---------------------------------------
+Memoization: Avoids redundant calculations by storing results
+Space-Time Tradeoff: Uses O(n) space to achieve O(1) query time
+Bottom-up Approach: Builds solutions from smaller to larger numbers
+Optimal Substructure: Each solution depends on previously computed optimal solutions
+
+Algorithm Approach
+------------------------
+Precompute solutions for all numbers from 1 to LIMIT
+For each number i, initialize with (i-1) operations (subtract 1 repeatedly)
+Check all divisors j where j*j <= i
+If i is divisible by j, consider path through i/j
+Take minimum of all possible paths
+
+Time Complexity
+-------------------
+Preprocessing: O(n√n) - For each number, check all divisors up to √n
+Query Time: O(1) - Direct array lookup
+Space Complexity: O(n) - Array to store all solutions
