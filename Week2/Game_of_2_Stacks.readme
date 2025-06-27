@@ -1,0 +1,37 @@
+Game of Two Stacks
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Problem Description
+----------------------
+Given two stacks and a maximum sum limit, find the maximum number of elements you can remove 
+from the tops of both stacks such that the sum doesn't exceed the given limit.
+
+Solution Overview
+-----------------------
+Uses two-pointer technique with greedy approach. 
+First maximizes elements from one stack, then tries adding from the second stack 
+while removing from the first when necessary.
+
+Data Structure Used
+--------------------
+List/Array: Represents the two stacks
+Two Pointers: Track current position in each stack
+
+Why This Data Structure is Efficient
+-----------------------------------------
+Linear Access: Lists provide O(1) access to elements by index
+Memory Efficient: Uses existing input structure without extra space
+Greedy Optimization: Two-pointer technique finds optimal solution in single pass
+No Backtracking: Avoids exponential time complexity of trying all combinations
+
+Algorithm Approach
+----------------------
+First phase: Take as many elements as possible from stack A
+Second phase: Try adding elements from stack B
+For each element added from B, remove elements from A if sum exceeds limit
+Track maximum count achieved at any point
+Return the maximum valid count
+
+Time Complexity
+-----------------------
+Time Complexity: O(n + m) - Where n and m are sizes of the two stacks
+Space Complexity: O(1) - Only uses pointer variables and counters
