@@ -1,0 +1,37 @@
+Simple Text Editor
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+Problem Description
+----------------------
+Implement a simple text editor supporting four operations: append text, delete last k characters, print kth character, and undo last operation.
+
+Solution Overview
+------------------------
+Uses StringBuilder for text manipulation and Stack for maintaining history states to support undo functionality.
+
+Data Structure Used
+-----------------------
+StringBuilder: Efficient string manipulation with O(1) append and delete
+Stack: Stores previous states of text for undo operations
+
+Why This Data Structure is Efficient
+-------------------------------------------
+StringBuilder Efficiency: Mutable string operations without creating new objects
+Stack for Undo: LIFO nature perfect for maintaining operation history
+Memory Management: Only stores states when modifications occur
+Fast Operations: All operations execute in O(1) or O(k) time
+
+Algorithm Approach
+-----------------------
+Append: Save current state to stack, then append new text
+Delete: Save current state to stack, then delete last k characters
+Print: Direct character access using StringBuilder's charAt method
+Undo: Restore previous state from stack
+
+Time Complexity
+----------------------
+Append: O(m) - Where m is length of text to append
+Delete: O(k) - Where k is number of characters to delete
+Print: O(1) - Direct character access
+Undo: O(n) - Where n is length of text to restore
+
+Space Complexity: O(n × m) - Where n is number of operations and m is average text length
