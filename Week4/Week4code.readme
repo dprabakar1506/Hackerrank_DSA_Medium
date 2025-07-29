@@ -1,0 +1,252 @@
+Week 4 - Java Programming Solutions Readme
+-----------------------------------------
+
+1. Bear and Steady Gene (Bear&SteadyGene.java)
+----------------------------------------------------
+Problem Description
+-----------------------
+You have a DNA string with letters A, C, G, T. Find the shortest part you need to change so that each letter appears exactly n/4 times in the whole string.
+
+Solution Overview
+-------------------
+We use sliding window technique. We try to find the smallest window that contains all the extra letters we need to remove to make the string balanced.
+
+Data Structure Used
+------------------------
+Integer Array: Count how many times each letter appears
+Two Pointers: Left and right pointers for the sliding window
+ASCII Indexing: Use character values directly as array indexes
+
+Why This Data Structure is Efficient
+---------------------------------------
+Fast Counting: O(1) time to update letter counts
+Direct Access: Use ASCII values to avoid hash maps
+Window Shrinking: Two pointers move efficiently to find minimum window
+
+Algorithm Approach
+----------------------------
+Count all letters in the string first
+If already balanced, return 0
+Use sliding window - expand right side, shrink left side
+When remaining string (outside window) is balanced, update minimum length
+Keep moving window until we check all positions
+
+Time Complexity: O(n) - Each character visited at most twice
+Space Complexity: O(1) - Fixed size array for ASCII characters
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+2. Common Child (CommonChild.java)
+-----------------------------------
+
+Problem Description
+--------------------
+Find the longest common subsequence between two strings. A subsequence keeps the order but can skip letters.
+
+Solution Overview
+-------------------
+We use dynamic programming to build a table that stores the longest common subsequence length for every pair of prefixes.
+
+Data Structure Used
+--------------------
+2D DP Array: Store longest common subsequence lengths
+Bottom-up Approach: Build solutions from smaller subproblems
+Character Comparison: Compare characters at each position
+
+Why This Data Structure is Efficient
+-------------------------------------
+Avoids Recalculation: Each subproblem solved only once
+Optimal Substructure: Larger problems built from smaller ones
+Complete Coverage: Considers all possible character pairs
+
+Algorithm Approach
+-------------------
+Create 2D table with dimensions (m+1) x (n+1)
+Fill table bottom-up: for each character pair
+If characters match: extend previous subsequence by 1
+If different: take maximum from left or top cell
+Final answer is in bottom-right corner
+
+Time Complexity: O(m × n) - Fill entire DP table once
+Space Complexity: O(m × n) - 2D array for storing results
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+3. Encryption (Encryption.java)
+--------------------------------
+
+Problem Description
+--------------------
+Take a string, arrange it in a rectangle grid, then read column by column to create encrypted text.
+
+Solution Overview
+-------------------
+We remove spaces, calculate grid dimensions using square root, fill the grid row by row, then read column by column.
+
+Data Structure Used
+--------------------
+String Operations: Remove spaces and build result
+Mathematical Calculation: Use square root to find grid size
+StringBuilder: Efficiently build the encrypted string
+
+Why This Data Structure is Efficient
+-------------------------------------
+Simple Logic: Direct calculation of grid dimensions
+Memory Efficient: Don't actually store grid, just calculate positions
+String Building: StringBuilder avoids creating many string objects
+
+Algorithm Approach
+------------------
+Remove all spaces from input string
+Calculate rows and columns using square root of length
+Adjust rows if needed to fit all characters
+For each column, collect characters from each row
+Add space between column groups
+
+Time Complexity: O(L) - Process each character once
+Space Complexity: O(L) - Space for result string
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+4. Highest Value Palindrome (HighestValuePalindrome.java)
+----------------------------------------------------------
+Problem Description
+--------------------
+Given a number string and k changes allowed, make it a palindrome with the highest possible value.
+
+Solution Overview
+-------------------
+We use greedy approach in two passes: first make it palindrome with minimum changes, then maximize digits to 9.
+
+Data Structure Used
+---------------------
+Character Array: Modify digits in place
+Boolean Array: Track which positions were already changed
+Greedy Strategy: Always try to maximize from left to right
+
+Why This Data Structure is Efficient
+--------------------------------------
+In-place Modification: Change characters directly without extra space
+Change Tracking: Remember which positions used changes already
+Greedy Optimization: Always choose the best option at each step
+
+Algorithm Approach
+--------------------
+First pass: Make palindrome using minimum changes (choose larger digit)
+Track which positions needed changes and count total changes
+If too many changes needed, return -1
+Second pass: Try to change digits to 9, considering remaining changes
+For odd-length strings, try to make middle digit 9 if changes left
+
+Time Complexity: O(n) - Two passes through the string
+Space Complexity: O(n) - Arrays for characters and change tracking
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+5. Maximum Palindromes (MaximumPalindromes.java)
+-------------------------------------------------
+
+Problem Description
+--------------------
+For many queries on a string, count how many different palindromes can be formed using letters from a substring.
+
+Solution Overview
+-------------------
+We use Mo's Algorithm to efficiently handle multiple range queries, with precomputed factorials and modular arithmetic.
+
+Data Structure Used
+--------------------
+Mo's Algorithm: Reorder queries to minimize updates
+Factorial Arrays: Precomputed factorials and inverse factorials
+Frequency Counting: Track letter counts in current range
+Modular Arithmetic: Handle large numbers with MOD operations
+
+Why This Data Structure is Efficient
+-------------------------------------
+Query Optimization: Mo's algorithm reduces total operations across all queries
+Precomputed Math: Factorials calculated once, used many times
+Efficient Updates: Add/remove characters in O(1) time
+Handles Large Numbers: Modular arithmetic prevents overflow
+
+Algorithm Approach
+-------------------
+Precompute factorials and inverse factorials up to maximum size
+Sort queries using Mo's algorithm ordering
+For each query, update frequency array by adding/removing characters
+Calculate palindrome count using combinatorics: arrangements of pairs + one odd character
+Use modular arithmetic throughout to handle large results
+
+Time Complexity: O(Q√N + N) - Mo's algorithm complexity plus preprocessing
+Space Complexity: O(N) - Arrays for factorials and frequency counting
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+6. Sherlock and Anagrams (Sherlock&Anagrams.java)
+--------------------------------------------------
+Problem Description
+---------------------
+Count how many pairs of substrings in a string are anagrams of each other.
+
+Solution Overview
+-------------------
+We generate all substrings, sort each one to create a signature, then count how many times each signature appears.
+
+Data Structure Used
+--------------------
+HashMap: Count occurrences of each sorted substring
+String Sorting: Create unique signature for anagram groups
+Combinatorics: Calculate pairs using nC2 formula
+
+Why This Data Structure is Efficient
+-------------------------------------
+Signature Approach: Sorting creates unique key for anagram groups
+Hash Counting: O(1) average time to update counts
+Mathematical Formula: Direct calculation of pairs from frequency
+
+Algorithm Approach
+--------------------
+Generate all possible substrings of the input string
+For each substring, sort its characters to create signature
+Count how many times each signature appears
+For each signature appearing n times, add n*(n-1)/2 to result
+Return total count of anagram pairs
+
+Time Complexity: O(n³ log n) - Generate O(n²) substrings, each sorted in O(n log n)
+Space Complexity: O(n³) - Store all substring signatures
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------
+7. Sherlock and Valid String (Sherlock&ValidString.java)
+---------------------------------------------------------
+
+Problem Description
+---------------------
+Check if a string can become "valid" by removing at most one character. A valid string has all characters appearing the same number of times.
+
+Solution Overview
+-------------------
+We count character frequencies, then count how many different frequency values exist. Check if removing one character can make all frequencies equal.
+Data Structure Used
+
+Frequency Array: Count how often each character appears
+HashMap: Count how many characters have each frequency
+Conditional Logic: Check various cases for validity
+
+Why This Data Structure is Efficient
+-------------------------------------
+Two-level Counting: First count characters, then count frequencies
+Case Analysis: Systematically check all possible valid scenarios
+Constant Space: Fixed size arrays for character counting
+
+Algorithm Approach
+--------------------
+Count frequency of each character in the string
+Count how many characters have each frequency value
+If only one frequency exists, already valid
+If more than two frequencies exist, impossible to fix
+Check special cases: frequency 1 (can remove), adjacent frequencies (can adjust one)
+
+Time Complexity: O(n) - Single pass to count characters plus constant work
+Space Complexity: O(1) - Fixed size arrays and small hashmap
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+How to Run These Programs
+Each file is a complete Java program. To run one:
+bashjavac filename.java
+java Solution < input.txt
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
