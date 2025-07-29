@@ -1,0 +1,285 @@
+Week 3 - Java Programming Readme
+ ------------------------------------
+
+1. 3D Surface Area (3DsurfaceArea.java)
+-------------------------------------------
+Problem Description
+---------------------
+You have blocks stacked on a grid (like Lego blocks). Find the total outside area of all the blocks.
+Solution Overview
+We look at each stack of blocks and count how much area is showing on the outside. We check the top, bottom, and all 4 sides.
+Data Structure Used
+
+2D List: Like a table that holds the height of blocks at each spot
+Numbers: Keep track of the total area
+
+Why This Data Structure is Efficient
+--------------------------------------
+Fast Access: We can quickly look at any spot in the grid
+Saves Memory: We only store what we need (the heights)
+Easy to Check: Simple to look at nearby spots
+
+Algorithmic Approach
+---------------------
+For each stack of blocks, add 2 for top and bottom faces
+For each of 4 sides, see how much area is showing
+If there's no blocks nearby, count the whole side
+
+Time Complexity: O(H × W) - Single pass through the grid
+Space Complexity: O(1) - Only using constant extra space
+----------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+2. Castle on the Grid (Castle_on_grid.java)
+---------------------------------------------
+
+Problem Description
+-------------------------
+Move from start point to end point on a grid. You can only move in straight lines until you hit a wall.
+How We Solve It
+We use a method called BFS (like exploring a maze level by level). But instead of one step at a time, we slide as far as we can go.
+What We Use to Store Data
+
+Queue: A line of places to check next
+True/False List: Remember which spots we already visited
+Number List: Count how many moves to reach each spot
+Grid: The map with walls and open spaces
+
+Solution Overview
+--------------------
+Finds Shortest Path: BFS always finds the quickest way first
+Good Memory Use: Stores the grid in a simple way
+Fast Operations: Adding and removing from queue is quick
+
+Algorithmic Approach
+------------------------
+Start from the beginning spot
+From each spot, slide as far as possible in all 4 directions
+Mark all spots you can reach with one more move
+Keep going until you reach the target
+
+Time Complexity: O(n²) - Each cell visited at most once
+Space Complexity: O(n²) - Arrays for visited, distance, and queue
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+3. Components in Graph (Components_in_graph.java)
+--------------------------------------------------
+Problem Description
+---------------------
+You have dots connected by lines. Find the smallest and largest groups of connected dots.
+How We Solve It
+We use Union-Find, which is like organizing friends into groups. When two people are friends, we put them in the same group.
+What We Use to Store Data
+
+Parent List: Shows which group each dot belongs to
+Size List: Counts how many dots are in each group
+Smart Shortcuts: Makes finding groups faster
+
+Solution Overview
+-------------------
+Super Fast: Finding and joining groups is almost instant
+Works While Adding: Can handle new connections easily
+Saves Space: Only needs two simple lists
+
+Algorithmic Approach
+-----------------------
+Start with each dot in its own group
+For each connection, join the two groups together
+Use shortcuts to make finding groups faster
+Count the smallest and largest groups that have more than one dot
+
+Time Complexity: O(n × α(n)) - Near linear due to Union-Find optimizations
+Space Complexity: O(n) - Parent and size arrays
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+4. Extra Long Factorials (ExtraLongFactorials.java)
+----------------------------------------------------------
+
+Problem Description
+----------------------
+Calculate factorial of big numbers (like 100!) that are way too big for normal numbers.
+How We Solve It
+We use Java's BigInteger which can handle numbers as big as we want.
+What We Use to Store Data
+
+BigInteger: Java's way to work with huge numbers
+Step by Step: Multiply one number at a time
+
+Solution Overview
+--------------------
+No Size Limit: Can handle numbers of any size
+Built-in Smarts: Java already knows how to do big number math
+Automatic: Handles growing numbers by itself
+
+Algorithmic Approach
+----------------------
+Start with the number 1
+Multiply by 2, then 3, then 4, and so on up to the target number
+Use BigInteger to handle the huge results
+
+Time Complexity: O(n × M) - Where M is the average number of digits
+Space Complexity: O(M) - Space for storing the large factorial result
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+5. Max Index Product (MaxIndexProduct.java)
+-----------------------------------------------
+
+Problem Description
+---------------------
+For each number in a list, find the bigger numbers on its left and right sides. Multiply their positions.
+How We Solve It
+We use a stack (like a pile of plates) to keep track of numbers and quickly find bigger ones.
+What We Use to Store Data
+
+Stack: A pile where we add and remove from the top
+Lists: Store the positions of bigger numbers
+
+Solution Overview
+-------------------
+Smart Order: The stack keeps numbers organized so we find answers fast
+One Pass: We only need to look at each number twice
+Finds Positions: Quickly locates where bigger numbers are
+
+Algorithmic Approach
+-----------------------
+Go left to right: Use stack to find bigger numbers on the left
+Go right to left: Do the same thing for the right side
+Multiply the positions for each number
+Find the biggest result
+
+Time Complexity: O(n) - Each element processed twice (once for each direction)
+Space Complexity: O(n) - Stack and result arrays
+
+----------------------------------------------------------------------------------------------------------------------------------------------------------
+6. Mr. X and His Shots (MrX&hisShots.java)
+---------------------------------------------
+Problem Description
+------------------------
+You have time periods for shots and time periods for players. Count how many shots overlap with each player's time.
+How We Solve It
+Instead of checking every shot with every player, we sort the times and use smart counting.
+
+Data Structure Used:
+-----------------------
+Sorted Lists: Start times and end times arranged in order
+Binary Search: Quick way to find positions in sorted lists
+
+Solution Overview
+----------------------
+Sorted Order: Makes searching much faster
+Smart Counting: Counts overlaps without checking every pair
+Avoids Slow Method: Much faster than comparing everything
+
+Algorithmic Approach
+---------------------------
+Sort all the start times and end times of shots
+For each player's time period:
+
+Count how many shots start before the player ends
+Count how many shots end before the player starts
+The difference is how many overlap
+
+Time Complexity: O(n log n + m log n) - Sorting + binary searches
+Space Complexity: O(n) - Arrays for sorted start and end points
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+7. Time in Words (TimeInWords.java)
+-------------------------------------------
+
+Problem Description
+------------------------
+Change digital time (like 3:15) into words (like "quarter past three").
+How We Solve It
+We make a list of number words and use simple rules to build the time in words.
+What We Use to Store Data
+
+Word List: Numbers 1-29 written as words
+Simple Rules: Handle special cases like "quarter" and "half"
+
+Solution Overview
+----------------------
+Quick Lookup: Instantly get the word for any number
+Simple Checks: Just a few if-statements for different cases
+Pre-made Words: Don't need to build words from scratch
+
+Algorithmic Approach
+-------------------------
+Make a list with number words (one, two, three...)
+Check for special times (o'clock, quarter, half)
+For other times, figure out if it's "past" or "to" the hour
+Put together the right words
+
+Time Complexity: O(1) - Constant time operations
+Space Complexity: O(1) - Fixed size string array
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+8. Contacts (contacts.java)
+--------------------------------
+
+Problem Description
+---------------------
+Make a phone book where you can add names and search for names that start with certain letters.
+How We Solve It
+We use a tree structure called Trie where each level represents one letter. This makes searching by prefix super fast.
+
+Data Structure Used 
+------------------------
+Tree: Each spot in the tree is one letter
+Counter: Each spot counts how many names pass through it
+26 Branches: One for each letter of the alphabet
+
+Solution Overview
+-------------------
+Fast Search: Finding names with a prefix is very quick
+Shares Space: Names with same starting letters share the same path
+Both Fast: Adding and searching are both quick
+Counts Automatically: Keeps track of how many names start with each prefix
+
+Algorithmic Approach
+--------------------------
+Adding: Follow the letters of the name, count +1 at each step
+Searching: Follow the prefix letters, return the count at the end
+Each letter spot has 26 possible next letters
+
+Time Complexity: O(L) for both insert and search, where L is string length
+Space Complexity: O(N × L) in worst case, where N is number of strings
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
+9. Jim and the Skyscrapers (jim&skyScrapers.java)
+-----------------------------------------------------
+Problem Description
+---------------------
+Count how many pairs of buildings can see each other (no taller building blocking the view).
+
+Data Structure Used
+------------------------
+Stack: Keeps buildings in order from tall to short
+Lists: Store building heights and count same-height buildings
+
+Solution Overview
+-------------------
+Stack : Automatically handles which buildings can see each other
+Handles Same Heights: Counts pairs of buildings with same height
+One Look: Each building is checked only once
+Saves Space: Stack never gets too big
+
+Algorithmic Approach
+------------------------
+For each building, remove shorter buildings from stack (they're blocked)
+If current building is same height as top of stack, they can see each other
+Otherwise, add the new building to stack
+Count pairs of same-height buildings
+Double the answer (buildings can see both ways)
+
+Time Complexity: O(n) - Each building pushed/popped at most once
+Space Complexity: O(n) - Stack storage in worst case
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Instructions to run code
+-------------------------
+
+bashjavac filename.java
+java Solution < input.txt
+These programs read input like competitive programming contests and print answers.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
