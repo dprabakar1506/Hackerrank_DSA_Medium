@@ -1,0 +1,254 @@
+Week 5 - Java Programming Readme
+------------------------------------
+1. Cipher (Cipher.java)
+-----------------------
+
+Problem Description
+--------------------
+You have an encrypted message where each bit is XOR of k consecutive original bits. Decrypt it to get the original message.
+
+Solution Overview
+-------------------
+We decode bit by bit using XOR operations. Each decoded bit helps us figure out the next one by keeping track of XOR values.
+
+Data Structure Used
+--------------------
+Integer Array: Store decoded bits as we figure them out
+Running XOR: Keep track of XOR of last k-1 decoded bits
+Sliding Window: Update XOR as we move through the message
+
+Why This Data Structure is Efficient
+--------------------------------------
+One Pass: We only need to go through the encrypted message once
+Constant Update: Adding and removing bits from XOR is very fast
+Memory Efficient: Only store what we need for the current window
+
+Algorithm Approach
+-------------------
+Start with empty XOR value
+For each encrypted bit, XOR it with current running XOR to get original bit
+Add this new bit to our running XOR
+Remove the bit that falls out of our k-sized window
+Build final message from first n-k+1 bits
+
+Time Complexity: O(n) - Look at each bit once
+Space Complexity: O(n) - Store decoded bits
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+2. Crossword Puzzle (CrosswordPuzzle.java)
+-------------------------------------------
+
+Problem Description
+--------------------
+Fill a 10x10 crossword puzzle with given words. Words can be placed horizontally or vertically and must fit perfectly.
+
+Solution Overview
+-------------------
+We use backtracking to try placing each word in every possible position until we find a solution that uses all words.
+
+Data Structure Used
+-------------------
+2D Character Array: The crossword grid
+Backtracking: Try placing words, undo if it doesn't work
+Boolean Array: Track which cells we changed so we can undo
+
+Why This Data Structure is Efficient
+--------------------------------------
+Try All Options: Backtracking explores every possible arrangement
+Smart Undoing: We remember what we changed so we can put it back
+Early Exit: Stop trying as soon as we find a working solution
+
+Algorithm Approach
+-------------------
+Try to place each word starting from first position
+For each word, try every position on the grid both horizontally and vertically
+Check if word fits without conflicting with existing letters
+If it fits, place it and try to place the next word
+If we can't place all words, undo and try different position
+
+Time Complexity: O(exponential) - Try many combinations
+Space Complexity: O(1) - Fixed size grid
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+3. Fibonacci Modified (FibonacciModified.java)
+----------------------------------------------
+
+Problem Description
+--------------------
+Calculate special Fibonacci where T(n) = T(n-2) + T(n-1)². Numbers get extremely large, bigger than normal integers.
+
+Solution Overview
+-------------------
+We use BigInteger to handle huge numbers and calculate step by step like regular Fibonacci but with squaring.
+
+Data Structure Used
+--------------------
+BigInteger: Handle numbers that grow extremely large
+Iterative Calculation: Compute each term using previous two terms
+Three Variables: Keep track of current and previous two values
+
+Why This Data Structure is Efficient
+-------------------------------------
+No Size Limit: BigInteger can handle numbers of any size
+Iterative Approach: Don't recalculate same values multiple times
+Memory Smart: Only keep three values at any time, not whole sequence
+
+Algorithm Approach
+-------------------
+Start with given first two terms
+For each new term, add first term to square of second term
+Move forward: first becomes second, second becomes new term
+Repeat until we reach the target position
+Return the final calculated value
+
+Time Complexity: O(n) - Calculate each term once
+Space Complexity: O(1) - Only store current and previous terms
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+4. Flipping the Matrix (FlippingTheMatrix.java)
+-----------------------------------------------
+Problem Description
+-------------------
+You can flip rows and columns of a 2n×2n matrix. Find maximum possible sum of top-left n×n section.
+
+Solution Overview
+-------------------
+We realize that each position in top-left section can get the maximum value from 4 symmetric positions through flipping.
+
+Data Structure Used
+-------------------
+2D Matrix: The grid we're working with
+Mathematical Insight: Each cell can access 4 positions through flips
+Greedy Selection: Always pick the maximum available value
+
+Why This Data Structure is Efficient
+-------------------------------------
+No Actual Flipping: We don't need to try all flip combinations
+Direct Calculation: For each position, directly find the best possible value
+One Pass: Look at each position in top-left section once
+
+Algorithm Approach
+-------------------
+For each position (i,j) in top-left n×n section
+Find the 4 positions that can reach this spot through row/column flips
+Take the maximum value among these 4 positions
+Add this maximum to our total sum
+Return the total sum
+
+Time Complexity: O(n²) - Check each position in top-left section
+Space Complexity: O(1) - Only use variables for calculation
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+5. Goodland Electricity (GoodlandElectricity.java)
+--------------------------------------------------
+
+Problem Description
+-------------------
+Cities are in a line. Place minimum number of power plants so every city gets electricity. Each plant covers k cities around it.
+
+Solution Overview
+-------------------
+We use greedy approach, always placing plants as far right as possible while still covering the leftmost uncovered city.
+
+Data Structure Used
+-------------------
+Array: Shows which locations can have power plants
+Greedy Strategy: Always make the best choice for current situation
+Position Tracking: Keep track of which cities are covered
+
+Why This Data Structure is Efficient
+-------------------------------------
+Greedy Works: The optimal strategy is to place plants as far right as possible
+Single Pass: Go through cities once from left to right
+Immediate Decision: Don't need to try different combinations
+
+Algorithm Approach
+-------------------
+Start from leftmost city that needs coverage
+Find the rightmost plant location that can still cover this city
+Place plant there (covers maximum future cities)
+Move to next uncovered city
+Repeat until all cities covered or impossible
+
+Time Complexity: O(n) - Visit each city at most once
+Space Complexity: O(1) - Only use tracking variables
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+6. Magic Square (MagicSquare.java)
+-----------------------------------
+
+Problem Description
+--------------------
+Change numbers in a 3×3 grid to make it a magic square (all rows, columns, diagonals sum to 15) with minimum cost.
+
+Solution Overview
+-------------------
+We precompute all 8 possible 3×3 magic squares and find which one costs least to convert to.
+
+Data Structure Used
+-------------------
+3D Array: Store all 8 possible magic squares
+Cost Calculation: Sum of absolute differences between corresponding positions
+Brute Force Comparison: Check against all possibilities
+
+Why This Data Structure is Efficient
+---------------------------------------
+Small Problem Size: Only 8 possible magic squares exist for 3×3
+Precomputed Solutions: No need to generate magic squares during solving
+Direct Comparison: Simple calculation to find conversion cost
+
+Algorithm Approach
+-------------------
+Store all 8 possible 3×3 magic squares using numbers 1-9
+For each magic square, calculate cost to convert input grid to it
+Cost is sum of absolute differences at each position
+Keep track of minimum cost found
+Return the minimum cost
+
+Time Complexity: O(1) - Fixed number of comparisons (8 × 9)
+Space Complexity: O(1) - Fixed storage for magic squares
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+7. Prim's MST (Prim'sMST.java)
+-------------------------------
+
+Problem Description
+--------------------
+Find minimum cost to connect all cities with roads. Use minimum spanning tree to connect everything with lowest total cost.
+
+Solution Overview
+------------------
+We use Prim's algorithm with priority queue to always pick the cheapest edge that connects a new city.
+
+Data Structure Used
+--------------------
+Adjacency List: Store graph connections and weights
+Priority Queue: Always get the cheapest available edge
+Boolean Array: Track which cities are already connected
+
+Why This Data Structure is Efficient
+-------------------------------------
+Always Cheapest: Priority queue gives us minimum cost edge instantly
+No Cycles: Only connect to unvisited cities, avoiding loops
+Optimal Growth: Grow the connected component in cheapest way possible
+
+Algorithm Approach
+-------------------
+Start from given starting city
+Add all edges from current connected cities to priority queue
+Always pick the cheapest edge that connects to a new city
+Add this new city to our connected component
+Repeat until all cities are connected
+
+Time Complexity: O(E log V) - Each edge processed once through priority queue
+Space Complexity: O(V + E) - Adjacency list and priority queue storage
+
+Instructions to Run These Programs
+-----------------------------------
+bashjavac filename.java
+java Solution < input.txt
+These programs read input like competitive programming contests and print answers.
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
